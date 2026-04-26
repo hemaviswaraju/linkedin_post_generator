@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Post Generator | AI + Multi‑language</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body data-theme="dark">
+    <div class="bg-orb"></div>
+    <div class="app">
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+
+        <header>
+            <h1>LinkedIn <span>Post Generator</span></h1>
+        </header>
+
+        <div class="two-columns">
+            <!-- LEFT: Inputs -->
+            <div class="input-panel glass">
+                <form id="postForm">
+                    <div class="field">
+                        <label><i class="fas fa-globe"></i> Language</label>
+                        <div class="lang-selector">
+                            <button type="button" data-lang="english" class="lang-btn active">🇬🇧 English</button>
+                            <button type="button" data-lang="telugu" class="lang-btn">🇮🇳 తెలుగు</button>
+                            <button type="button" data-lang="hindi" class="lang-btn">🇮🇳 हिन्दी</button>
+                        </div>
+                        <input type="hidden" id="languageInput" value="english">
+                    </div>
+
+                    <div class="field">
+                        <label><i class="fas fa-user-astronaut"></i> I am a</label>
+                        <div class="toggle-group">
+                            <button type="button" data-type="student" class="toggle-btn active">🎓 Student</button>
+                            <button type="button" data-type="professional" class="toggle-btn">💼 Professional</button>
+                        </div>
+                        <input type="hidden" id="userTypeInput" value="student">
+                    </div>
+
+                    <div class="field">
+                        <label><i class="fas fa-lightbulb"></i> Topic / Idea</label>
+                        <textarea id="topicInput" rows="3" placeholder="e.g., How to stay productive while working remotely..."></textarea>
+                        <div class="char-counter"><span id="charCount">0</span> characters</div>
+                    </div>
+
+                    <div class="field">
+                        <label><i class="fas fa-face-smile"></i> Tone</label>
+                        <div class="pill-group" id="toneGroup">
+                            <button type="button" data-tone="professional" class="pill active">Professional</button>
+                            <button type="button" data-tone="casual" class="pill">Casual</button>
+                            <button type="button" data-tone="inspiring" class="pill">Inspiring 🔥</button>
+                            <button type="button" data-tone="educational" class="pill">Educational 📚</button>
+                            <button type="button" data-tone="funny" class="pill">Witty 😄</button>
+                        </div>
+                        <input type="hidden" id="toneInput" value="professional">
+                    </div>
+
+                    <div class="field">
+                        <label><i class="fas fa-ruler-combined"></i> Length</label>
+                        <div class="slider-wrap">
+                            <input type="range" id="lengthSlider" min="0" max="2" step="1" value="1">
+                            <div class="slider-labels">
+                                <span>Short</span>
+                                <span>Medium</span>
+                                <span>Long</span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="lengthInput" value="medium">
+                    </div>
+
+                    <button type="submit" class="generate-btn" id="generateBtn">
+                        <span class="btn-text"><i class="fas fa-magic"></i> Generate Post</span>
+                        <div class="loader hidden"><i class="fas fa-spinner fa-pulse"></i></div>
+                    </button>
+                </form>
+            </div>
+
+            <!-- RIGHT: Output -->
+            <div class="output-panel glass">
+                <div class="output-header">
+                    <h3><i class="fas fa-newspaper"></i> Generated Post</h3>
+                    <div class="action-buttons">
+                        <button id="copyBtn" class="icon-btn" title="Copy"><i class="fas fa-copy"></i></button>
+                        <button id="regenerateBtn" class="icon-btn" title="Regenerate"><i class="fas fa-rotate-right"></i></button>
+                    </div>
+                </div>
+                <div id="outputArea">
+                    <div id="generatedPost" class="post-content">✨ Your post will appear here...</div>
+                    <div id="loadingState" class="loading-state hidden">
+                        <div class="spinner"></div>
+                        <p>Generating...</p>
+                    </div>
+                    <div id="errorMsg" class="error-msg hidden"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by Google Gemini AI | Authentic posts in English, తెలుగు, हिन्दी</p>
+        </footer>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
